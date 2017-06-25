@@ -1,3 +1,18 @@
+exports.renderLogin = function(req, res) {
+  res.render('login', {
+    title: 'login'
+  });
+};
+
+exports.renderRegister = function(req, res) {
+  res.render('register', {
+    title: 'REGISTER'
+  });
+};
+
+
+
+
 exports.login = function(req, res){
   console.log(req.body);
   console.log('Email: ' + req.body.email);
@@ -11,17 +26,20 @@ exports.login = function(req, res){
       isLoggedIn: false
     });
     return;
-  }a
+  }
   if (req.body.remember == 'remember'){
     req.session.remember = true;
     req.session.email = req.body.email;
   }
 
   res.render('index', {
-    title: 'Logged in as ' + req.body.email,
+    title: 'Logged in as '  + req.body.email,
     isLoggedIn: true
   });
 };
+
+
+
 
 exports.logout = function(req, res){
   req.session = null;
@@ -30,3 +48,10 @@ exports.logout = function(req, res){
     isLoggedIn: false
   });
 };
+
+/*exports.register = function(req, res) {
+  res.render('index', {
+    title: 'Register',
+    isregister: fales
+  });
+};*/

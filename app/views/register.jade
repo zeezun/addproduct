@@ -1,0 +1,35 @@
+html
+  head
+
+
+  div.container
+    title= title
+    link(href='css/register.css', rel='stylesheet')
+
+    div
+      img(src="img/hello.gif")
+
+
+    body
+    h1= title
+    div
+            label(for='name') Name :&nbsp
+            input(type='text', name='Name' ,placeholder='Name')
+
+
+
+          div
+          label(for='email') Email :&nbsp
+          input(type='text', name='Email' ,placeholder='Email')
+
+
+          div
+          label(for='username') Username :&nbsp
+          input(type='text', name='Username' ,placeholder='Username')
+
+          div
+          label(for='password') Password :&nbsp
+          input(type='password', name='password' ,placeholder='password')
+
+          div
+            input(type='submit', value= 'OK')

@@ -1,0 +1,35 @@
+html
+  head
+
+
+  div.container
+    title= title
+    link(href='css/main.css', rel='stylesheet')
+
+    div
+      img(src="img/hello.gif")
+    body
+
+
+
+    h1= title
+    if isLoggedIn
+      h3 You are logged in.
+      form(name='logout', method='POST', action='logout')
+        div
+          input(type='submit', value='Logout')
+    else
+      form(name='login', method='POST', action='login')
+        div
+          input(name='email', type='email', placeholder='zeezun.romiojulius@hotmail.com')
+        div
+
+          input(name='password', type='password', placeholder='password')
+
+        div
+                    input(type='submit', value= 'Login')
+
+
+
+                    div
+                    a(href='register') Register

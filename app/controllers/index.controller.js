@@ -7,7 +7,9 @@ exports.render = function(req, res){
   }
 
   res.render('index', {
-    'title': 'Login',
+    'title': 'login',
     'message': 'How are things'
+
+    
   });
 };
