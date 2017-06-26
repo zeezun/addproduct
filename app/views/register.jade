@@ -10,26 +10,32 @@ html
       img(src="img/hello.gif")
 
 
-    body
+      body
+      each msg in messages
+       div.flash
+          = msg
+
+        form(name='register', method='POST', action='/register')
     h1= title
     div
             label(for='name') Name :&nbsp
-            input(type='text', name='Name' ,placeholder='Name')
+            input(type='text', name='name' ,placeholder='Name')
 
 
 
           div
-          label(for='email') Email :&nbsp
-          input(type='text', name='Email' ,placeholder='Email')
+          label(for='Email') Email ::&nbsp
+          input( type='email', name='email', placeholder='youremail@email.com')
 
 
           div
           label(for='username') Username :&nbsp
-          input(type='text', name='Username' ,placeholder='Username')
+          input(type='text', name='username' ,placeholder='Username')
 
           div
           label(for='password') Password :&nbsp
-          input(type='password', name='password' ,placeholder='password')
+          input(type='password', name='Password' ,placeholder='password')
 
           div
+
             input(type='submit', value= 'OK')

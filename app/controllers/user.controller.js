@@ -1,57 +1,143 @@
+var User = require('mongoose').model('User');
+var passport = require('passport')
+
+var getErrorMessage = function(err) {
+  var messages = '';
+
+  if (err.code) {
+    switch (err.code) {
+      case 11000:
+      case 11001:
+          messages = 'username ซ้ำค่ะ';
+          break;
+        default:
+          messages = 'ลองใหม่อีกครั้งค่ะ'
+        }
+      }else {
+        for (var errName in err.errors) {
+          if (err.errors[errName].message) {
+            messages = err.errors[errName].message;
+          }
+        }
+      }
+      return messages;
+};
+
+
+
+
 exports.renderLogin = function(req, res) {
-  res.render('login', {
-    title: 'login'
-  });
-};
-
-exports.renderRegister = function(req, res) {
-  res.render('register', {
-    title: 'REGISTER'
-  });
-};
-
-
-
-
-exports.login = function(req, res){
-  console.log(req.body);
-  console.log('Email: ' + req.body.email);
-  console.log('Passwored: ' + req.body.password);
-  req.checkBody('email', 'Invalid email').notEmpty().isEmail();
-  req.sanitizeBody('email').normalizeEmail();
-  var errors = req.validationErrors();
-  if (errors){
-    res.render('index',{
-      title: 'There have been validation errors: ' + JSON.stringify(errors),
-      isLoggedIn: false
+  if (!req.user){
+    res.render('login', {
+      title: 'Log In',
+      messages: req.flash('error')|| req.flash('info')
     });
-    return;
-  }
-  if (req.body.remember == 'remember'){
-    req.session.remember = true;
-    req.session.email = req.body.email;
-  }
+  }else {
+    return res.res.redirect('/');
+  }};
 
-  res.render('index', {
-    title: 'Logged in as '  + req.body.email,
-    isLoggedIn: true
+  exports.signup = function(req, res, next) {
+      if (!req.user) {
+        var user = new User(req.body);
+        user.provider = 'local';
+
+        user.save(function(err) {
+          if (err) {
+              var message = getErrorMessage(err);
+
+              req.flash('error', message);
+              return res.redirect('/signup');
+            }
+
+          req.login(user, function(err) {
+              if (err) return next(err);
+              return res.redirect('/');
+          });
+        });
+      } else {
+      return res.redirect('/');
+    }
+  };
+  exports.renderSignup = function(req, res) {
+        if (!req.user) {
+        res.render('signup', {
+          title: 'Sign up',
+          messages: req.flash('error')
+        });
+      }else {
+        return res.res.redirect('/');
+      }
+  };
+
+  exports.logout = function(req, res){
+    req.logout();
+    res.render('/');
+
+  };
+
+  exports.renderIndex= function(req, res){
+    res.render('index',{
+      title: 'Index',
+    });
+  };
+
+exports.create = function(req, res, next) {
+  var user = new User(req.body);
+
+  user.save(function(err) {
+    if (err) {
+        return next(err);
+      } else {
+        res.json(user);
+      }
   });
 };
 
+exports.list = function(req, res, next) {
+    User.find ({}, function(err, users){
+      if (err) {
+          return next(err);
+        }else {
+          res.json(users);
+        }
+      });
+};
+
+exports.read = function(req, res){
+    res.json(req.user);
+};
 
 
+exports.update = function(req, res, next){
+    User.findOneAndUpdate({username: req.user.username}, req.body,
+      function(err, user) {
+        if (err) {
+          return next(err);
+        } else {
+            res.json(user);
+        }
+    });
+};
 
-exports.logout = function(req, res){
-  req.session = null;
-  res.render('index', {
-    title: 'See you again later',
-    isLoggedIn: false
+exports.delete = function(req, res, next) {
+  req.user.remove(function(err) {
+    if (err) {
+        return next(err);
+      }else {
+        res.json(req.user);
+      }
   });
 };
 
-/*exports.register = function(req, res) {
-  res.render('index', {
-    title: 'Register',
-    isregister: fales
+exports.userByUsername = function(req, res, next, username){
+    User.findOne({
+        username: username
+      }, function(err, user) {
+        if (err) {
+            return next(err);
+    } else {
+      req.user = user;
+      next();
+    }
   });
-};*/
+};

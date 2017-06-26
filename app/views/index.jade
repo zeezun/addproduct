@@ -11,6 +11,9 @@ html
     .w3-sidebar a {font-family: "Roboto", sans-serif}
     body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   body.w3-content(bgcolor='#363636', style='max-width:1200px')
+
+
+
     // Sidebar/menu
     nav#mySidebar.w3-sidebar.w3-bar-block.w3-white.w3-collapse.w3-top(style='z-index:3;width:250px')
       .w3-container.w3-display-container.w3-padding-16
@@ -25,7 +28,7 @@ html
 
       .w3-padding-64.w3-large.w3-text-grey(style='font-weight:bold')
         a.w3-bar-item.w3-button(href='login') Login
-        a.w3-bar-item.w3-button(href='#') Logout
+
 
 
 
@@ -57,6 +60,8 @@ html
                   button.w3-button
                     | Buy now
                     i.fa.fa-shopping-cart
+
+
               p
                 font(color='#FFFAFA')
                   | Maprang
@@ -116,19 +121,6 @@ html
                 br
                 b $19.99
 
-                footer#footer.w3-padding-64.w3-light-grey.w3-small.w3-center
-                                  .w3-row-padding
-                                    .w3-col.s4
-                                      Add ITEMS
-                                      form(action='/action_page.php', target='_blank')
-                                        p
-                                        label(for='name') Name :&nbsp
-                                          input.w3-input.w3-border(type='text', name='Name', required='')
-                                        p
-                                        label(for='name') Price :&nbsp
-                                          input.w3-input.w3-border(type='text', name='price', required='')
-
-                                        button.w3-button.w3-block.w3-black(type='submit') ok
 
 
 

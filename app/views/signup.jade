@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title Login Form
+
+  body
+    div
+    .contianer
+        link(href='css/register.css', rel='stylesheet')
+
+      div
+        form#login_form(name='sigup', method='POST', action='signup')
+        .field_container
+          label(for='username') Username :&nbsp
+          input(for='username', name='username', type='text', placeholder='username')
+        .field_container
+          label(for='firstname') Firstname :&nbsp
+          input(for='firstname', name='Firstname', type='text', placeholder='Firstname')
+          .field_container
+          label(for='Email') Email &nbsp :&nbsp &nbsp &nbsp &nbsp
+          input(for='email', name='Email', type='email', placeholder='Email')
+        .field_container
+          label(for='password') Password :&nbsp
+          input(for='password',name='password', type='Password', placeholder='Password')
+          p
+          div
+          button#sign_in_button
+            span.button_text SIGN UP

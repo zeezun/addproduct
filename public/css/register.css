@@ -1,29 +1,56 @@
 body{
   margin: 0 auto;
-  background-image: url("../img/BG.jpg");
+  background-image: url("../img/jj.gif");
   background-repeat: no-repeat;
   background-size:100% 720px;
+  padding: 0;
+	color: #fff;
+	font-family: Arial;
+	font-size: 12px;
 }
+
 .container{
   width: 500px;
   height: 300px;
-  text-align: center;
+  text-align: right;
   background-color: rgba(115, 115, 115, 0.7);
-  color: #000000;
+  color: #FFFFFF;
   border-radius: 4px;
   margin: 0 auto;
   margin-top: 150px;
 }
+
 input{
-  height: 45px;
-  width: 300px;
-  font-size:18px;
+
+    width: 260px;
+  	height: 35px;
+  	background: #fff;
+  	border: 1px solid #fff;
+  	cursor: pointer;
+  	border-radius: 2px;
+  	color: #a18d6c;
+  	font-family: 'Exo', sans-serif;
+  	font-size: 16px;
+  	font-weight: 400;
+  	padding: 6px;
+  	margin-top: 10px;
+    opacity: 0.8;
+    left:0px;
+
 
 }
 .btn-register{
+  outline: none;
+}
+
+::-webkit-input-placeholder{
+ color: rgba(255,255,255,0.6);
+}
+
+::-moz-input-placeholder{
+ color: rgba(255,255,255,0.6);
 padding: 15px 25px;
-color: #FFFFFF;
 border: none;
-background-color: #E9967A;
+
 
 }
