@@ -3,18 +3,19 @@ html
   head
     meta(charset='UTF-8')
     title Login Form
+    div
+    body.contianer
+      link(href='css/main.css', rel='stylesheet')
 
-
-  body
-  .contianer
-      link(href='css/register.css', rel='stylesheet')
   #login
-
+  .container
       form#login_form(name='signup', method='POST', action='signup')
         .field_container
           input(for='username', name='username', type='text', placeholder='username')
           .field_container
           input(for='password',name='password', type='Password', placeholder='Password')
-
+          div
           a.w3-bar-item.w3-button(href='index') Login
-          input(type='submit', value= 'signup')
+          div
+          p
+          input(type='submit', value= 'SIGN UP')
