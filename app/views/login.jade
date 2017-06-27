@@ -14,8 +14,18 @@ html
           input(for='username', name='username', type='text', placeholder='username')
           .field_container
           input(for='password',name='password', type='Password', placeholder='Password')
-          div
+        div
           a.w3-bar-item.w3-button(href='index') Login
-          div
+        div
           p
           input(type='submit', value= 'SIGN UP')
+
+        div(ng-app='Hello' ng-controller='NameController')
+
+          div
+            label(for='yourName') Your name is
+            input(name='yourName', type='text', ng-model='yourName')
+            div
+            | {{ yourName | sayhello }}
+          script(type='text/javascript', src='/lib/angular/angular.min.js')
+          script(type='text/javascript', src='/application.js')
