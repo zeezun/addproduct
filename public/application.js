@@ -1,9 +1,18 @@
 'use strict';
 
-var mainAppModule = angular.module('Hello', []);
+var mainAppModuleName = 'Main';
+var mainAppModule = angular.module(mainAppModuleName, ['hello']);
 
-mainAppModule.controller('NameController', ['$scope', function($scope) {
+angular.element(document).ready(function(){
+    angular.bootstrap(document.querySelector('#mainApp'), [mainAppModuleName], {
+      strictDi: true
+
+    });
+});
+
+mainAppModule.controller('NameController', ['$scope', '$http', function($scope, $http) {
   $scope.yourName = 'No Name';
+  var user_json = $http.get('/user');
 }]);
 
 mainAppModule.filter('sayhello', function() {

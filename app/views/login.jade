@@ -3,29 +3,29 @@ html
   head
     meta(charset='UTF-8')
     title Login Form
+
     div
     body.contianer
       link(href='css/main.css', rel='stylesheet')
 
-  #login
-  .container
-      form#login_form(name='signup', method='POST', action='signup')
-        .field_container
-          input(for='username', name='username', type='text', placeholder='username')
-          .field_container
-          input(for='password',name='password', type='Password', placeholder='Password')
-        div
-          a.w3-bar-item.w3-button(href='index') Login
-        div
-          p
-          input(type='submit', value= 'SIGN UP')
+      #login
+            form#login_form(name='login', method='POST', action='/login')
+              .field_container
+                input(name='username', type='text', placeholder='username')
+              .field_container
+                input(name='password', type='Password', placeholder='Password')
+                .field_container
+                each msg in messages
+                 div.flash
+                    = msg
+                button#sign_in_button
+                  span.button_text Log in
 
-        div(ng-app='Hello' ng-controller='NameController')
+     div#mainApp(ng-include="'/modules/hello/views/hello.cilent.view.jade'")
 
-          div
-            label(for='yourName') Your name is
-            input(name='yourName', type='text', ng-model='yourName')
-            div
-            | {{ yourName | sayhello }}
-          script(type='text/javascript', src='/lib/angular/angular.min.js')
-          script(type='text/javascript', src='/application.js')
+
+        script(type='text/javascript', src='/lib/angular/angular.min.js')
+        script(type='text/javascript', src='/modules/hello/hello.client.module.js')
+        script(type='text/javascript', src='/modules/hello/controllers/hello.client.controller.js')
+        script(type='text/javascript', src='/modules/hello/filters/hello.client.filter.js')
+        script(type='text/javascript', src='/application.js')

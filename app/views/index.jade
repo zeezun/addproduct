@@ -18,8 +18,23 @@ html
         i.fa.fa-remove.w3-hide-large.w3-button.w3-display-topright(onclick='w3_close()')
         h3.w3-wide
           b M2N SHOP
-      .w3-padding-64.w3-large.w3-text-grey(style='font-weight:bold')
-        a.w3-bar-item.w3-button.w3-padding.w3-text-whiten(href='login') Login
+            if username
+              h2 Hello #{username}
+              div
+                form(name='logout', method='post', action='/logout')
+                  input(type='submit', value='Log out')
+            else
+              div
+                a(href='/signup') Sign up
+              div
+                a(href='/login') Log in
+
+     .w3-padding-64.w3-large.w3-text-grey(style='font-weight:bold')
+        a.w3-bar-item.w3-button.w3-padding.w3-text-white(href='login') Login
+
+
+
+
     // Top menu on small screens
     header.w3-bar.w3-top.w3-hide-large.w3-black.w3-xlarge
       .w3-bar-item.w3-padding-24.w3-wide M2N SHOP
@@ -47,14 +62,14 @@ html
           p
             a.w3-button.w3-black.w3-padding-large.w3-large(href='#jeans') SHOP NOW
       #jeans.w3-container.w3-text-grey
-        p 6 items
+        p 8 items
       // Product grid
       .w3-row.w3-grayscale
         .w3-col.l3.s6
           .w3-container
             .w3-display-container
               img(src='https://images.express.com/is/image/expressfashion/0091_07117496_0019_f01?cache=on&wid=960&fmt=jpeg&qlt=85,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon', style='width:100%')
-              span.w3-tag.w3-display-topleft New
+              span.w3-tag.w3-red.w3-display-topleft New
               .w3-display-middle.w3-display-hover
                 a.w3-bar-item.w3-button.w3-padding.w3-text-red(href='javascript:void(0)', onclick="document.getElementById('newsletter').style.display='block'") Buy now
             p
@@ -65,7 +80,7 @@ html
           .w3-container
             .w3-display-container
               img(src='https://images.express.com/is/image/expressfashion/91_711_7472_019_f49?cache=on&wid=960&fmt=jpeg&qlt=85,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon', style='width:100%')
-              span.w3-tag.w3-display-topleft New
+              span.w3-tag.w3-red.w3-display-topleft New
               .w3-display-middle.w3-display-hover
                 a.w3-bar-item.w3-button.w3-padding.w3-text-red(href='javascript:void(0)', onclick="document.getElementById('newsletter').style.display='block'") Buy now
             p
@@ -73,14 +88,19 @@ html
                 | Anemay
                 br
                 b $19.99
+
+            p
+
+
         .w3-col.l3.s6
           .w3-container
             .w3-display-container
               img(src='https://images.express.com/is/image/expressfashion/0091_06997566_0020_f01?cache=on&wid=960&fmt=jpeg&qlt=85,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon', style='width:100%')
-              span.w3-tag.w3-display-topleft New
+              span.w3-tag.w3-red.w3-display-topleft New
               .w3-display-middle.w3-display-hover
                 a.w3-bar-item.w3-button.w3-padding.w3-text-red(href='javascript:void(0)', onclick="document.getElementById('newsletter').style.display='block'") Buy now
             p
+
               font(color='#FFFAFA')
                 | Nutsara
                 br
@@ -88,7 +108,7 @@ html
           .w3-container
             .w3-display-container
               img(src='https://images.express.com/is/image/expressfashion/91_701_6311_058_01?cache=on&wid=960&fmt=jpeg&qlt=85,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon', style='width:100%')
-              span.w3-tag.w3-display-topleft New
+              span.w3-tag.w3-red.w3-display-topleft New
               .w3-display-middle.w3-display-hover
                 a.w3-bar-item.w3-button.w3-padding.w3-text-red(href='javascript:void(0)', onclick="document.getElementById('newsletter').style.display='block'") Buy now
             p
@@ -100,7 +120,7 @@ html
           .w3-container
             .w3-display-container
               img(src='https://images.express.com/is/image/expressfashion/91_715_7201_020_f01?cache=on&wid=960&fmt=jpeg&qlt=85,1&resmode=sharp2&op_usm=1,1,5,0&defaultImage=Photo-Coming-Soon', style='width:100%')
-              span.w3-tag.w3-display-topleft New
+              span.w3-tag.w3-red.w3-display-topleft New
               .w3-display-middle.w3-display-hover
                 a.w3-bar-item.w3-button.w3-padding.w3-text-red(href='javascript:void(0)', onclick="document.getElementById('newsletter').style.display='block'") Buy now
             p
@@ -111,7 +131,7 @@ html
           .w3-container
             .w3-display-container
               img(src='http://slimages.macys.com/is/image/MCY/products/3/optimized/3038829_fpx.tif', style='width:100%')
-              span.w3-tag.w3-display-topleft New
+              span.w3-tag.w3-red.w3-display-topleft New
               .w3-display-middle.w3-display-hover
                 a.w3-bar-item.w3-button.w3-padding.w3-text-red(href='javascript:void(0)', onclick="document.getElementById('newsletter').style.display='block'") Buy now
             p
@@ -123,7 +143,7 @@ html
           .w3-container
             .w3-display-container
               img(src='https://s7d2.scene7.com/is/image/aeo/0436_1037_490_of?$cat-main_large$', style='width:100%')
-              span.w3-tag.w3-display-topleft New
+              span.w3-tag.w3-red.w3-display-topleft New
               .w3-display-middle.w3-display-hover
                 a.w3-bar-item.w3-button.w3-padding.w3-text-red(href='javascript:void(0)', onclick="document.getElementById('newsletter').style.display='block'") Buy now
             p
@@ -134,27 +154,34 @@ html
           .w3-container
             .w3-display-container
               img(src='https://sep.yimg.com/ay/langstons/juniors-levi-s-535-super-skinny-jean-wanderer-3.jpg', style='width:100%')
-              span.w3-tag.w3-display-topleft New
+              span.w3-tag.w3-red.w3-display-topleft New
               .w3-display-middle.w3-display-hover
                 a.w3-bar-item.w3-button.w3-padding.w3-text-red(href='javascript:void(0)', onclick="document.getElementById('newsletter').style.display='block'") Buy now
             p
               font(color='#FFFAFA')
-                | KangDaniel
+                | LeeMinho
                 br
                 b $19.99
+
+            p
+
+
       // Subscribe section
       .w3-container.w3-black.w3-padding-32
         b.w3-text-grey
           h1 Store
           p
             i.fa.fa-fw.fa-map-marker
-            |  Company Name
+            |  M2N SHOP
           p
             i.fa.fa-fw.fa-phone
-            |  0044123123
+            |  0626050111
           p
             i.fa.fa-fw.fa-envelope
-            |  ex@mail.com
+            |  zeezun.romiojulius@hotmail.com
+
+
+
       // Footer
     // End page content
     // Newsletter Modal

@@ -39,22 +39,22 @@ default: Date.now
 
 });
 
-UserSchema.pre('save', function(next) {
-  if (this.password) {
-    this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
-    this.password = this.hashPassword(this.password);
+UserSchema.pre('save',function(next){// pre-save
+ if(this.password){
 
-  }
-  next();
+   this.salt = new Buffer(crypto.randomBytes(16).toString('base64'),'base64');
+   this.password = this.hashPassword(this.password);
+ }
+ next();
 });
 
-UserSchema.methods.hashPassword = function(password) {
-  return crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64');
+UserSchema.methods.hashPassword = function(password){
+ //crete hash password
+ return crypto.pbkdf2Sync(password,this.salt,10000,64).toString('base64');
 };
-UserSchema.methods.aithenticate = function(password){
-    return this.password === this.hashPassword(password);
-
+UserSchema.methods.authenticate = function(password){
+ return this.password === this.hashPassword(password);
+ //return password after hash === this.hashPassword(password user );
 };
 
-
-  mongoose.model('User' ,UserSchema);
+mongoose.model('User',UserSchema);//User is Modelname (table)
