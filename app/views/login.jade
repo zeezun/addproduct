@@ -9,6 +9,7 @@ html
       link(href='css/main.css', rel='stylesheet')
 
       #login
+        .container
             form#login_form(name='login', method='POST', action='/login')
               .field_container
                 input(name='username', type='text', placeholder='username')
@@ -18,6 +19,7 @@ html
                 each msg in messages
                  div.flash
                     = msg
+                p
                 button#sign_in_button
                   span.button_text Log in
 

@@ -35,8 +35,9 @@ exports.renderSignup = function(req,res){
 exports.renderLogin = function(req,res){
  if(!req.user){
   res.render('login',{
-   title:'Log in',
-   messages:req.flash('error')||req.flash('info')
+    title:'Log in',
+    messages:req.flash('error')||req.flash('info')
+
   });
  }else{
   return res.redirect('/');
@@ -104,6 +105,12 @@ exports.signup = function(req,res,next){
   exports.renderIndex= function(req, res){
     res.render('index',{
       title: 'Index',
+    });
+  };
+
+  exports.renderAdd= function(req, res){
+    res.render('add',{
+      title: 'add',
     });
   };
 

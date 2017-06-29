@@ -7,6 +7,10 @@ module.exports = function(app) {
         .get(user.renderSignup)
         .post(user.signup);
 
+  app.route('/add')
+  .get(user.renderAdd)
+  .post(user.renderAdd);
+
 
 
   app.route('/login')
@@ -16,14 +20,14 @@ module.exports = function(app) {
           failureRedirect: '/login',
           failureFlash: true
   }));
+
   app.post('/logout', user.logout);
   app.route('/index')
         .get(user.renderIndex);
 
 
 
-
-  app.route('/user')
+app.route('/user')
 .post(user.create)
 .get(user.list);
 
