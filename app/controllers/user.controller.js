@@ -108,12 +108,6 @@ exports.signup = function(req,res,next){
     });
   };
 
-  exports.renderAdd= function(req, res){
-    res.render('add',{
-      title: 'add',
-    });
-  };
-
   exports.list = function(req,res,next){
    User.find({},function(err,User){// find in mongoDB
      if(err){

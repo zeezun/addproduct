@@ -7,10 +7,6 @@ module.exports = function(app) {
         .get(user.renderSignup)
         .post(user.signup);
 
-  app.route('/add')
-  .get(user.renderAdd)
-  .post(user.renderAdd);
-
 
 
   app.route('/login')

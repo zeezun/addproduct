@@ -52,6 +52,8 @@ app.use(express.static('./public'));
 
 require('../app/routes/index.routes')(app);
 require('../app/routes/user.routes')(app);
+require('../app/routes/product.routes')(app);
+
 return app;
 
 }

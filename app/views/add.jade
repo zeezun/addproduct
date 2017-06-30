@@ -35,6 +35,7 @@ html
 
 
 
+
     // Top menu on small screens
     header.w3-bar.w3-top.w3-hide-large.w3-black.w3-xlarge
       .w3-bar-item.w3-padding-24.w3-wide M2N SHOP
@@ -180,25 +181,29 @@ html
             i.fa.fa-fw.fa-envelope
             |  zeezun.romiojulius@hotmail.com
 
+
+            #add
+            if product
+                #{product}
             .container
             .w3-row-padding
             .w3-col.s4
             center
-                form(action='/action_page.php', target='_blank')
-                  h2.w3-wide.w3-center ADD STOCK
-                  p
-                    center
-                      input.w3-input.w3-border(type='text', placeholder='NAME PRODUCT....', name='NAME PRODUCT.....', required='')
-                  p
-                    center
-                      input.w3-input.w3-border(type='text', placeholder='PRICE....', name='PRICE......', required='')
-                  button.w3-button.w3-padding-large.w3-grey.w3-margin-bottom(type='button', onclick="document.getElementById('newsletter').style.display='none'") ADD
-                  |       &nbsp &nbsp
-                  button.w3-button.w3-padding-large.w3-grey.w3-margin-bottom(type='button', onclick="document.getElementById('newsletter').style.display='none'") ADD PIC.
 
+            h2.w3-wide.w3-center ADD STOCK
 
+            p
+            form(name='add', method='POST', action='/add')
+              center
+                input.w3-input.w3-border(for='productname', name='productname', type='text', placeholder='NAME PRODUCT....')
 
-    // Footer
+              center
+                input.w3-input.w3-border(for='price', name='price', type='text', placeholder='PRICE....')
+                center
+                input.w3-input.w3-border(for='image', name='image', type='text', placeholder='IMAGE....')
+                input(type='submit', value= 'Add')
+
+  // Footer
   // End page content
   // Newsletter Modal
   #newsletter.w3-modal

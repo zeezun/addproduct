@@ -2,7 +2,7 @@ exports.render = function(req, res){
 
 if(req.user && req.user.username === 'zeezun') {
     res.render('add', {
-    title: 'admin' ,
+    title: 'add' ,
     username : req.user ? req.user.username : ''
       });
   } else {
